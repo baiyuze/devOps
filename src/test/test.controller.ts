@@ -21,6 +21,7 @@ export class TestController {
     // INSERT INTO test(hha,xx,xx) VALUES('xxx','xxxq')
     // await this.testService.insert(body);
     // return true;
+    // console.log(this.logger)
     throw new BadGatewayException('报错了');
   }
 
