@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Query, HttpCode, UseFilters, BadGatewayException } from '@nestjs/common';
 import { TestService } from './test.service';
 import { Test } from './entities/test.entity';
-// import { ApiProperty, ApiOperation } from '@nestjs/swagger'
+import { ApiProperty, ApiOperation, ApiQuery } from '@nestjs/swagger'
 
 @Controller('test')
 export class TestController {
@@ -12,6 +12,8 @@ export class TestController {
     return this.testService.findAll();
   }
   @Get('one')
+  @ApiOperation({ summary: '根据ID获取数据' })
+  @ApiQuery({ name: 'id' })
   getOne(@Query() query): Promise<Test> {
     const id: string = query.id;
     return this.testService.findOne(id);
