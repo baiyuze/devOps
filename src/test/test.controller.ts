@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Query, HttpCode, UseFilters, BadGatewayException } from '@nestjs/common';
 import { TestService } from './test.service';
 import { Test } from './entities/test.entity';
+// import { ApiProperty, ApiOperation } from '@nestjs/swagger'
 
 @Controller('test')
 export class TestController {

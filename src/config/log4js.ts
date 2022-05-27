@@ -5,14 +5,14 @@ const log4jsConfig = {
     out: {
       type: 'stdout', layout: {
         type: 'pattern',
-        pattern: '[Nest] %h %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m'
+        pattern: '[Nest] %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m'
       }
     },
     console: {
       type: 'console',//打印到控制台
       layout: {
         type: 'pattern',
-        pattern: '%[[Nest] %h %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %] %c %m',
+        pattern: '%[[Nest] %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %] %c %m',
       },
     },
     access: {
@@ -26,7 +26,7 @@ const log4jsConfig = {
       keepFileExt: false,//是否保留文件后缀
       layout: {
         type: 'pattern',
-        pattern: '[Nest] %h %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
+        pattern: '[Nest] %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
 
       },
     },
@@ -36,7 +36,7 @@ const log4jsConfig = {
       alwaysIncludePattern: true,
       layout: {
         type: 'pattern',
-        pattern: '[Nest] %h %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
+        pattern: '[Nest] %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
       },
       //日志文件按日期切割
       pattern: 'yyyy-MM-dd',
@@ -50,7 +50,7 @@ const log4jsConfig = {
       alwaysIncludePattern: true,
       layout: {
         type: 'pattern',
-        pattern: '[Nest] %h %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
+        pattern: '[Nest] %z - [ %d{yyyy/MM/dd hh.mm.ss} ] %p %c %m',
       },
       //日志文件按日期切割
       pattern: 'yyyy-MM-dd',
@@ -76,4 +76,5 @@ const log4jsConfig = {
   pm2: true,//使用pm2来管理项目时打开
   pm2InstanceVar: 'INSTANCE_ID',// 会根据 pm2 分配的 id 进行区分，以免各进程在写日志时造成冲突
 }
+
 export default log4jsConfig;
