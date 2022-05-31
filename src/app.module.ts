@@ -4,8 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TestModule } from './test/test.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { LoginModule } from './login/login.module';
 const business = [
-  TestModule
+  TestModule,
+  LoginModule
 ];
 @Module({
   imports: [TypeOrmModule.forRoot(), ...business],

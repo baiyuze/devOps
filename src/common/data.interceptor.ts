@@ -13,7 +13,7 @@ export class DataPackage implements NestInterceptor {
       .pipe(
         map((data) => ({
           msg: 'success',
-          data,
+          data: data || null,
           code: 200
         }))
       );

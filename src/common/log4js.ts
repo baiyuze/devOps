@@ -90,7 +90,7 @@ Log4js.addLayout('Awesome-nest', (logConfig: any) => {
 // 注入配置
 Log4js.configure(config);
 //实例化
-const logger = Log4js.getLogger('🐈');
+const logger = Log4js.getLogger('😛');
 
 logger.level = LoggerLevel.TRACE;
 
