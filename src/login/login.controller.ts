@@ -2,13 +2,11 @@ import { Body, Controller, Post, BadRequestException } from '@nestjs/common';
 import { User } from './entities/user.entity'
 import { LoginService } from './login.service';
 import { Validator } from '../common/decorator/validator.decorator';
-const crypto = require("crypto");
+import { sha256 } from '../common/utils'
 
 @Controller('user')
 export class LoginController {
   constructor(private readonly loginService: LoginService) { }
-
-
   /**
    * 登录后，生成token
    */
@@ -18,8 +16,6 @@ export class LoginController {
     { reg: /^[a-z0-9_-]{6,18}$/, key: 'password', msg: 'password需为6-18位的字母或数字,可以为_-', required: true }
   ])
   async signIn(@Body() body: User) {
-    // const a = await this.loginService.insertUserInfo();
-    // return a;
     return await this.loginService.signInGetToken(body);
   }
 
@@ -35,9 +31,7 @@ export class LoginController {
     const { name, password, phone, email, account } = body;
     const hasSameAccount = this.loginService.selectUserAccount(account);
     if (hasSameAccount) throw new BadRequestException('账号已存在，请更换后重试');
-    const sha256 = crypto.createHash('sha256');
-    sha256.update(password);
-    const psd = sha256.digest("hex");
+    const psd = sha256(password);
     const data: User = {
       name,
       password: psd,
