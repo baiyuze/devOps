@@ -7,7 +7,7 @@ export default {
     password: 'xNeDfyae^58EX6#',
     database: 'general_data',
     entities: ["dist/**/*.entity{.ts,.js}"],
-    synchronize: true,
+    synchronize: false,
   },
   redis: {
 
