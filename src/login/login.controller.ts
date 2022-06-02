@@ -29,7 +29,7 @@ export class LoginController {
   ])
   async registerAccount(@Body() body: User) {
     const { name, password, phone, email, account } = body;
-    const hasSameAccount = this.loginService.selectUserAccount(account);
+    const hasSameAccount = await this.loginService.selectUserAccount(account);
     if (hasSameAccount) throw new BadRequestException('账号已存在，请更换后重试');
     const psd = sha256(password);
     const data: User = {
