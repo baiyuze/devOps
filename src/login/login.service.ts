@@ -12,6 +12,7 @@ export class LoginService {
     private userRepository: Repository<User>,
     private readonly jwtService: JwtService
   ) { }
+
   async selectUserAccount(account: string, type?: boolean) {
     const userInfo: User = await this.userRepository.findOne({ account });
     if (!userInfo) return false;

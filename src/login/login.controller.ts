@@ -1,9 +1,10 @@
-import { Body, Controller, Post, BadRequestException } from '@nestjs/common';
+import { Body, Controller, Post, Get, BadRequestException, UseGuards, Request } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { User } from './entities/user.entity'
 import { LoginService } from './login.service';
 import { Validator } from '../common/decorator/validator.decorator';
 import { sha256 } from '../common/utils'
-
+import { JwtAuthGuard } from '../common/auth/jwt-auth.guard'
 @Controller('user')
 export class LoginController {
   constructor(private readonly loginService: LoginService) { }
@@ -46,5 +47,12 @@ export class LoginController {
     } catch (error) {
       return new BadRequestException(error);
     }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('test')
+  async test(@Request() req) {
+    console.log(req.user, 'req.user===')
+    return '测试';
   }
 }
