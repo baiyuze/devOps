@@ -16,7 +16,8 @@ export class User {
   account: string;
 
   @Column('char', {
-    length: 30
+    length: 30,
+    name: 'create_time'
   })
   createTime?: string;
 
@@ -33,6 +34,8 @@ export class User {
   })
   email?: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({
+    name: 'update_time'
+  })
   updateTime?: string;
 }

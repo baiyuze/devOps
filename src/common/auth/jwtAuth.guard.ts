@@ -13,9 +13,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
   }
 
   handleRequest(err, user, info) {
-    // console.log(err, user, info, '11111111')
-    // 在此添加token过期等消息返回
-    // 可以抛出一个基于info或者err参数的异常
     if (err || !user) {
       throw err || new UnauthorizedException('token验证失败');
     }

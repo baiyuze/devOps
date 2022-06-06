@@ -4,7 +4,7 @@ import { User } from './entities/user.entity'
 import { LoginService } from './login.service';
 import { Validator } from '../common/decorator/validator.decorator';
 import { sha256 } from '../common/utils'
-import { JwtAuthGuard } from '../common/auth/jwt-auth.guard'
+import { JwtAuthGuard } from '../common/auth/jwtAuth.guard'
 @Controller('user')
 export class LoginController {
   constructor(private readonly loginService: LoginService) { }
@@ -48,7 +48,7 @@ export class LoginController {
       return new BadRequestException(error);
     }
   }
-
+  // 校验是否登录装饰器
   @UseGuards(JwtAuthGuard)
   @Get('test')
   async test(@Request() req) {
